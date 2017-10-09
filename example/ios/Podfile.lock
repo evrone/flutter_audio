@@ -4,12 +4,12 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `/Users/topsoft/flutter/bin/cache/artifacts/engine/ios-release`)
+  - Flutter (from `/Users/topsoft/flutter/bin/cache/artifacts/engine/ios`)
   - medcorder_audio (from `/Users/topsoft/Documents/PROJECTS/MEDCORDER/flutter_audio/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: /Users/topsoft/flutter/bin/cache/artifacts/engine/ios-release
+    :path: /Users/topsoft/flutter/bin/cache/artifacts/engine/ios
   medcorder_audio:
     :path: /Users/topsoft/Documents/PROJECTS/MEDCORDER/flutter_audio/ios
 

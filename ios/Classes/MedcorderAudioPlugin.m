@@ -331,7 +331,7 @@ FlutterEventSink _eventSink;
   [registrar addMethodCallDelegate:instance channel:channel];
     
     FlutterEventChannel* chargingChannel = [FlutterEventChannel
-                                            eventChannelWithName:@"medcorder_audio_vents"
+                                            eventChannelWithName:@"medcorder_audio_events"
                                             binaryMessenger:[registrar messenger]];
     [chargingChannel setStreamHandler:instance];
 }
