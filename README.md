@@ -1,8 +1,8 @@
 # medcorder_audio
 
 ## Flutter record/play audio plugin.
-### Developed for Evrone.com
-### Funded by David Weekly
+### Developed for [Evrone.com](https://evrone.com/)
+### Funded by David Weekly [dweek.ly](http://dweek.ly/)
 
 ## Getting Started
 
