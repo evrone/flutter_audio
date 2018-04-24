@@ -50,6 +50,7 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
 
   MedcorderAudioPlugin(Activity _activity){
     this.activity = _activity;
+    this.context = this.activity.getApplicationContext();
   }
 
   public static void registerWith(Registrar registrar) {
@@ -84,7 +85,7 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
     } else if (call.method.equals("stopRecord")) {
       result.success(stopRecord() ? "OK" : "FAIL");
     } else if (call.method.equals("startPlay")) {
-      HashMap<String, Object> params = (HashMap<String, Object>) call.arguments;
+      HashMap params = (HashMap) call.arguments;
       String fileName = (String) params.get("file");
       double position = (double) params.get("position");
       result.success(startPlay(fileName, position) ? "OK" : "FAIL");
