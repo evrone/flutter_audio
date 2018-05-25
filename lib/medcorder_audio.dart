@@ -10,13 +10,13 @@ class MedcorderAudio {
   static const EventChannel eventChannel =
   const EventChannel('medcorder_audio_events');
 
-  dynamic callback;
+  var callback;
 
   MedcorderAudio(){
     eventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onError);
   }
 
-  void setCallBack(dynamic _callback){
+  void setCallBack(var _callback){
     callback = _callback;
   }
 
@@ -76,7 +76,7 @@ class MedcorderAudio {
     }
   }
 
-  Future<String> startPlay(dynamic params) async {
+  Future<String> startPlay(Object params) async {
     try {
       final String result = await platform.invokeMethod('startPlay', params);
       print('startPlay: ' + result);
@@ -98,11 +98,11 @@ class MedcorderAudio {
     }
   }
 
-  void _onEvent(Map<String, dynamic> event) {
+  void _onEvent(Object event) {
     callback(event);
   }
 
-  void _onError(PlatformException error) {
+  void _onError(Object error) {
     print('CHannel Error');
   }
 }

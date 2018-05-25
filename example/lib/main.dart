@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
   @override
   initState() {
     super.initState();
-    audioModule.setCallBack((dynamic data){
+    audioModule.setCallBack((var data){
       _onEvent(data);
     });
     _initSettings();
@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  Future _StartStopPlay() async{
+  Future _startStopPlay() async{
     if(isPlay){
       await audioModule.stopPlay();
     }else{
@@ -88,7 +88,7 @@ class _MyAppState extends State<MyApp> {
 
 
 
-  void _onEvent(dynamic event){
+  void _onEvent(var event){
     if(event['code'] == 'recording'){
       double power = event['peakPowerForChannel'];
       setState((){
@@ -152,7 +152,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 onTap: (){
                   if (!isRecord && file.length > 0){
-                    _StartStopPlay();
+                    _startStopPlay();
                   }
                 },
               ),
