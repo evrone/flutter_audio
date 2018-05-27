@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.util.Log;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
 import java.io.File;
@@ -20,12 +21,13 @@ import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.PluginRegistry;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /**
  * MedcorderAudioPlugin
  */
-public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.StreamHandler {
+public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.StreamHandler,PluginRegistry.RequestPermissionsResultListener {
   /**
    * Plugin registration.
    */
@@ -45,6 +47,8 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
   private String currentPlayingFile;
   private boolean isPlaying = false;
   private double playerSecondsElapsed;
+  private PluginRegistry.RequestPermissionsResultListener mPermissionsResultListener;
+  private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 123;
 
   private Activity activity;
 
@@ -61,6 +65,9 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
 
     final EventChannel eventChannel = new EventChannel(registrar.messenger(), "medcorder_audio_events");
     eventChannel.setStreamHandler(plugin);
+
+    final MedcorderAudioPlugin instance = new MedcorderAudioPlugin(registrar.activity());
+    registrar.addRequestPermissionsResultListener(instance);
 
   }
 
@@ -106,11 +113,18 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
   }
 
   private boolean checkMicrophonePermissions(){
-    int permissionCheck = ContextCompat.checkSelfPermission(activity,
+    int permissionCheck = ActivityCompat.checkSelfPermission(activity,
             Manifest.permission.RECORD_AUDIO);
     boolean permissionGranted = permissionCheck == PackageManager.PERMISSION_GRANTED;
+
+    if(!permissionGranted){
+      ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.RECORD_AUDIO},
+              REQUEST_PERMISSIONS_REQUEST_CODE);
+    }
     return permissionGranted;
   }
+
+
 
   private boolean startRecord(String fileName){
     Log.d(TAG, "startRecord:" + fileName);
@@ -287,4 +301,13 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
     sendEvent(body);
   }
 
+  @Override
+  public boolean onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    if (requestCode == REQUEST_PERMISSIONS_REQUEST_CODE) {
+      if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
