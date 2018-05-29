@@ -1,0 +1,22 @@
+PODS:
+  - Flutter (1.0.0)
+  - medcorder_audio (0.0.4):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `/Users/rodrigomathias/development/flutter/bin/cache/artifacts/engine/ios`)
+  - medcorder_audio (from `/Users/rodrigomathias/Work/VizExplorer/flutter_plugins/flutter_audio/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: "/Users/rodrigomathias/development/flutter/bin/cache/artifacts/engine/ios"
+  medcorder_audio:
+    :path: "/Users/rodrigomathias/Work/VizExplorer/flutter_plugins/flutter_audio/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
+  medcorder_audio: 515fe3ed9ab26bfb8d5625a93da5292719b9ab30
+
+PODFILE CHECKSUM: 351e02e34b831289961ec3558a535cbd2c4965d2
+
+COCOAPODS: 1.5.2

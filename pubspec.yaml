@@ -1,6 +1,6 @@
 name: medcorder_audio
 description: Flutter audio record/play plugin.
-version: 0.0.1
+version: 0.0.6
 author: Dzmirty Kryvalapau <dimmetrius@gmail.com>
 homepage: https://github.com/evrone/flutter_audio
 

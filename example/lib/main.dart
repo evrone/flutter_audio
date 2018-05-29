@@ -64,6 +64,10 @@ class _MyAppState extends State<MyApp> {
     try {
       final String result = await audioModule.stopRecord();
       print('stopRecord: ' + result);
+
+      final String base64 = await audioModule.base64(file);
+      print('base64: ' + base64);
+
       setState((){
         isRecord = false;
       });

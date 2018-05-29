@@ -87,6 +87,18 @@ class MedcorderAudio {
     }
   }
 
+  Future<String> startPlayBase64(String base64) async {
+    try {
+      print('init startPlayBase64: ' + base64);
+      final String result = await platform.invokeMethod('startPlayBase64', base64);
+      print('startPlayBase64: ' + result);
+      return result;
+    } catch (e) {
+      print('startPlayBase64: fail');
+      return 'fail';
+    }
+  }
+
   Future<String> stopPlay() async {
     try {
       final String result = await platform.invokeMethod('stopPlay');
@@ -94,6 +106,17 @@ class MedcorderAudio {
       return result;
     } catch (e) {
       print('stopPlay: fail');
+      return 'fail';
+    }
+  }
+
+  Future<String> base64(String file) async {
+    try {
+      final String result = await platform.invokeMethod('base64', file);
+      print('base64: ' + result);
+      return result;
+    } catch (e) {
+      print('base64: fail');
       return 'fail';
     }
   }
