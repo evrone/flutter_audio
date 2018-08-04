@@ -8,7 +8,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.0-alpha03'
+        classpath 'com.android.tools.build:gradle:3.3.0-alpha04'
+        classpath 'com.google.gms:google-services:4.0.1'
     }
 }
 
@@ -23,6 +24,7 @@ apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 28
+    // buildToolsVersion '25.0.3'
 
     defaultConfig {
         minSdkVersion 16
@@ -38,6 +40,6 @@ android {
 
 dependencies {
     // compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:support-v13:28.0.0-beta01'
-    compile 'com.android.support:appcompat-v7:28.0.0-beta01'
+    implementation 'com.android.support:support-v13:28.0.0-beta01'
+    implementation 'com.android.support:appcompat-v7:28.0.0-beta01'
 }
