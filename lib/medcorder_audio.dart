@@ -2,23 +2,20 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class MedcorderAudio {
-
-  static const MethodChannel platform =
-  const MethodChannel('medcorder_audio');
+  static const MethodChannel platform = const MethodChannel('medcorder_audio');
 
   static const EventChannel eventChannel =
-  const EventChannel('medcorder_audio_events');
+      const EventChannel('medcorder_audio_events');
 
   dynamic callback;
 
-  MedcorderAudio(){
+  MedcorderAudio() {
     eventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onError);
   }
 
-  void setCallBack(dynamic _callback){
+  void setCallBack(dynamic _callback) {
     callback = _callback;
   }
-
 
   Future<String> setAudioSettings() async {
     try {
@@ -66,7 +63,8 @@ class MedcorderAudio {
 
   Future<String> checkMicrophonePermissions() async {
     try {
-      final String result = await platform.invokeMethod('checkMicrophonePermissions');
+      final String result =
+          await platform.invokeMethod('checkMicrophonePermissions');
       print('stopPlay: ' + result);
       return result;
     } catch (e) {
@@ -97,11 +95,11 @@ class MedcorderAudio {
     }
   }
 
-  void _onEvent(Map<String, dynamic> event) {
+  void _onEvent(dynamic event) {
     callback(event);
   }
 
-  void _onError(PlatformException error) {
+  void _onError(dynamic error) {
     print('CHannel Error');
   }
 }
