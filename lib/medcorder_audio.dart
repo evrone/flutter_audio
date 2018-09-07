@@ -1,17 +1,11 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 
-abstract class MedcorderAudioCallback{
-  void onEvent(dynamic event);
-  void onError(dynamic error);
-}
-
 class MedcorderAudio {
   static const MethodChannel platform = const MethodChannel('medcorder_audio');
 
   static const EventChannel eventChannel = const EventChannel('medcorder_audio_events');
 
-//  MedcorderAudioCallback callback;
   Function(dynamic error) errorCallback;
   Function(dynamic event) eventCallback;
 
