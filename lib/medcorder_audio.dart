@@ -1,20 +1,27 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 
+abstract class MedcorderAudioCallback{
+  void onEvent(dynamic event);
+  void onError(dynamic error);
+}
+
 class MedcorderAudio {
   static const MethodChannel platform = const MethodChannel('medcorder_audio');
 
-  static const EventChannel eventChannel =
-      const EventChannel('medcorder_audio_events');
+  static const EventChannel eventChannel = const EventChannel('medcorder_audio_events');
 
-  dynamic callback;
+//  MedcorderAudioCallback callback;
+  Function(dynamic error) errorCallback;
+  Function(dynamic event) eventCallback;
 
   MedcorderAudio() {
     eventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onError);
   }
 
-  void setCallBack(dynamic _callback) {
-    callback = _callback;
+  void setCallBack({Function(dynamic event) eventCallback, Function(dynamic error) errorCallback}) {
+    this.errorCallback = errorCallback;
+    this.eventCallback = eventCallback;
   }
 
   Future<String> setAudioSettings() async {
@@ -96,10 +103,17 @@ class MedcorderAudio {
   }
 
   void _onEvent(dynamic event) {
-    callback(event);
+    if (eventCallback != null) {
+//      callback(event);
+      eventCallback(event);
+    }
   }
 
   void _onError(dynamic error) {
-    print('CHannel Error');
+    if (errorCallback != null) {
+      print('CHannel Error: $error');
+      errorCallback(error);
+    }
+
   }
 }
