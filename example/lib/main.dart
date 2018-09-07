@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:medcorder_audio/medcorder_audio.dart';
+import 'package:simple_permissions/simple_permissions.dart';
 
 void main() {
   runApp(new MyApp());
@@ -22,6 +23,7 @@ class _MyAppState extends State<MyApp> {
   bool isPlay = false;
   double playPosition = 0.0;
   String file = "";
+  String errorMessage = 'No permissions for record, tab to request';
 
   @override
   initState() {
@@ -156,7 +158,17 @@ class _MyAppState extends State<MyApp> {
               ),
               new Text('playing: ' + playPosition.toString()),
             ],
-          ): new Text('No permissions for record'),
+          ): GestureDetector(
+            onTap: () async{
+              SimplePermissions.requestPermission(Permission.RecordAudio)
+                  .then((granted) {
+                    setState(() {
+                      canRecord = granted == PermissionStatus.authorized;
+                    });
+              });
+            },
+            child: new Text(errorMessage),
+          )
         ),
       ),
     );

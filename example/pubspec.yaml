@@ -12,6 +12,10 @@ dev_dependencies:
   medcorder_audio:
     path: ../
 
+  simple_permissions:
+    git: git://github.com/1and1get2/flutter_simple_permissions
+#    git: git://github.com/Ethras/flutter_simple_permissions
+
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
