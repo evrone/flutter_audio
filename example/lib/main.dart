@@ -26,9 +26,7 @@ class _MyAppState extends State<MyApp> {
   @override
   initState() {
     super.initState();
-    audioModule.setCallBack(eventCallback: (dynamic data){
-      _onEvent(data);
-    });
+    audioModule.setCallBack(eventCallback: _onEvent);
     _initSettings();
   }
 
