@@ -13,9 +13,9 @@ class MedcorderAudio {
     eventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onError);
   }
 
-  void setCallBack({Function(dynamic event) eventCallback, Function(dynamic error) errorCallback}) {
-    this.errorCallback = errorCallback;
+  void setCallBack(Function(dynamic event) eventCallback, {Function(dynamic error) errorCallback}) {
     this.eventCallback = eventCallback;
+    this.errorCallback = eventCallback == null ? null : errorCallback;
   }
 
   Future<String> setAudioSettings() async {
