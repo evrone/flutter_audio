@@ -76,26 +76,36 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
 
   @Override
   public void onMethodCall(MethodCall call, Result result) {
-    if (call.method.equals("setAudioSettings")) {
-      result.success("OK");
-    } else if (call.method.equals("backAudioSettings")) {
-      result.success("OK");
-    } else if (call.method.equals("startRecord")) {
-      result.success(startRecord((String) call.arguments) ? "OK" : "FAIL");
-    } else if (call.method.equals("stopRecord")) {
-      result.success(stopRecord() ? "OK" : "FAIL");
-    } else if (call.method.equals("startPlay")) {
-      HashMap params = (HashMap) call.arguments;
-      String fileName = (String) params.get("file");
-      double position = (double) params.get("position");
-      result.success(startPlay(fileName, position) ? "OK" : "FAIL");
-    } else if (call.method.equals("stopPlay")) {
-      stopPlay();
-      result.success("OK");
-    } else if (call.method.equals("checkMicrophonePermissions")) {
-      result.success(checkMicrophonePermissions() ? "OK" : "NO");
-    } else {
-      result.notImplemented();
+    switch(call.method) {
+        case "setAudioSettings":
+        case "backAudioSettings":
+            result.success("OK");
+            break;
+        case "startRecord":
+            result.success(startRecord((String) call.arguments) ? "OK" : "FAIL");
+            break;
+        case "stopRecord":
+            result.success(stopRecord() ? "OK" : "FAIL");
+            break;
+        case "startPlay":
+            HashMap params = (HashMap) call.arguments;
+            String fileName = (String) params.get("file");
+            double position = (double) params.get("position");
+            result.success(startPlay(fileName, position) ? "OK" : "FAIL");
+            break;
+        case "stopPlay":
+            stopPlay();
+            result.success("OK");
+            break;
+        case "checkMicrophonePermissions":
+            result.success(checkMicrophonePermissions() ? "OK" : "NO");
+            break;
+        case "requestMicrophonePermissions":
+        case "pauseRecord":
+        case "resumeRecord":
+        default:
+            result.notImplemented();
+            break;
     }
   }
     

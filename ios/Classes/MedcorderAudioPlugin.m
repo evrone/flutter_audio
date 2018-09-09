@@ -250,6 +250,28 @@ FlutterEventSink _eventSink;
     
 }
 
+
+-(void) pauseRecord{
+    if(recordTimer != nil && [recordTimer isValid]){
+        [recordTimer invalidate];
+        recordTimer = nil;
+    };
+    if ([recorder isRecording]){
+        [recorder stop];
+    }
+}
+
+-(void) resumeRecord{
+    if(recordTimer != nil && [recordTimer isValid]){
+        [recordTimer invalidate];
+        recordTimer = nil;
+    };
+    if ([recorder isRecording]){
+        [recorder stop];
+    }
+}
+
+
 - (void)startPlay:(NSString*) fromFile :(double) position {
     NSArray *searchPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentPath_ = [searchPaths objectAtIndex: 0];
@@ -366,7 +388,15 @@ FlutterEventSink _eventSink;
                 result(@"NO");
             }
         }];
-    }else {
+    /*
+    } else if ([@"pauseRecord" isEqualToString:call.method]) {
+        [self pauseRecord];
+        result(@"OK");
+    } else if ([@"resumeRecord" isEqualToString:call.method]) {
+        [self resumeRecord];
+        result(@"OK");
+    */
+    } else {
         result(FlutterMethodNotImplemented);
     }
 }
