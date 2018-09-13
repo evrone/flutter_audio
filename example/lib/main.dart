@@ -75,7 +75,7 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-  Future _StartStopPlay() async{
+  Future _startStopPlay() async{
     if(isPlay){
       await audioModule.stopPlay();
     }else{
@@ -152,7 +152,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 onTap: (){
                   if (!isRecord && file.length > 0){
-                    _StartStopPlay();
+                    _startStopPlay();
                   }
                 },
               ),
