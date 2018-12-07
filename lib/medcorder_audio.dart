@@ -98,11 +98,11 @@ class MedcorderAudio {
     }
   }
 
-  void _onEvent(Map<String, dynamic> event) {
+  void _onEvent(dynamic event) {
     callback(event);
   }
 
-  void _onError(PlatformException error) {
+  void _onError(error, StackTrace stackTrace) {
     print('CHannel Error');
   }
 }
