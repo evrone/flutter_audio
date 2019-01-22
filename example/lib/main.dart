@@ -13,7 +13,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   MedcorderAudio audioModule = new MedcorderAudio();
   bool canRecord = false;
   double recordPower = 0.0;
@@ -26,17 +25,17 @@ class _MyAppState extends State<MyApp> {
   @override
   initState() {
     super.initState();
-    audioModule.setCallBack((dynamic data){
+    audioModule.setCallBack((dynamic data) {
       _onEvent(data);
     });
     _initSettings();
   }
 
-  Future _initSettings() async{
+  Future _initSettings() async {
     final String result = await audioModule.checkMicrophonePermissions();
-    if (result == 'OK'){
+    if (result == 'OK') {
       await audioModule.setAudioSettings();
-      setState((){
+      setState(() {
         canRecord = true;
       });
     }
@@ -46,11 +45,11 @@ class _MyAppState extends State<MyApp> {
   Future _startRecord() async {
     try {
       DateTime time = new DateTime.now();
-      setState((){
+      setState(() {
         file = time.millisecondsSinceEpoch.toString();
       });
       final String result = await audioModule.startRecord(file);
-      setState((){
+      setState(() {
         isRecord = true;
       });
       print('startRecord: ' + result);
@@ -64,21 +63,21 @@ class _MyAppState extends State<MyApp> {
     try {
       final String result = await audioModule.stopRecord();
       print('stopRecord: ' + result);
-      setState((){
+      setState(() {
         isRecord = false;
       });
     } catch (e) {
       print('stopRecord: fail');
-      setState((){
+      setState(() {
         isRecord = false;
       });
     }
   }
 
-  Future _startStopPlay() async{
-    if(isPlay){
+  Future _startStopPlay() async {
+    if (isPlay) {
       await audioModule.stopPlay();
-    }else{
+    } else {
       await audioModule.startPlay({
         "file": file,
         "position": 0.0,
@@ -86,25 +85,23 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-
-
-  void _onEvent(dynamic event){
-    if(event['code'] == 'recording'){
+  void _onEvent(dynamic event) {
+    if (event['code'] == 'recording') {
       double power = event['peakPowerForChannel'];
-      setState((){
+      setState(() {
         recordPower = (60.0 - power.abs().floor()).abs();
         recordPosition = event['currentTime'];
       });
     }
-    if(event['code'] == 'playing'){
+    if (event['code'] == 'playing') {
       String url = event['url'];
-      setState((){
+      setState(() {
         playPosition = event['currentTime'];
         isPlay = true;
       });
     }
-    if(event['code'] == 'audioPlayerDidFinishPlaying') {
-      setState((){
+    if (event['code'] == 'audioPlayerDidFinishPlaying') {
+      setState(() {
         playPosition = 0.0;
         isPlay = false;
       });
@@ -119,46 +116,51 @@ class _MyAppState extends State<MyApp> {
           title: new Text('Audio example app'),
         ),
         body: new Center(
-          child: canRecord ? new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              new InkWell(
-                child: new Container(
-                  alignment: FractionalOffset.center,
-                  child: new Text(isRecord ? 'Stop':'Record'),
-                  height: 40.0,
-                  width: 200.0,
-                  color: Colors.blue,
+          child: canRecord
+              ? new Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    new InkWell(
+                      child: new Container(
+                        alignment: FractionalOffset.center,
+                        child: new Text(isRecord ? 'Stop' : 'Record'),
+                        height: 40.0,
+                        width: 200.0,
+                        color: Colors.blue,
+                      ),
+                      onTap: () {
+                        if (isRecord) {
+                          _stopRecord();
+                        } else {
+                          _startRecord();
+                        }
+                      },
+                    ),
+                    new Text('recording: ' + recordPosition.toString()),
+                    new Text('power: ' + recordPower.toString()),
+                    new InkWell(
+                      child: new Container(
+                        margin: new EdgeInsets.only(top: 40.0),
+                        alignment: FractionalOffset.center,
+                        child: new Text(isPlay ? 'Stop' : 'Play'),
+                        height: 40.0,
+                        width: 200.0,
+                        color: Colors.blue,
+                      ),
+                      onTap: () {
+                        if (!isRecord && file.length > 0) {
+                          _startStopPlay();
+                        }
+                      },
+                    ),
+                    new Text('playing: ' + playPosition.toString()),
+                  ],
+                )
+              : new Text(
+                  'Microphone Access Disabled.\nYou can enable access in Settings',
+                  textAlign: TextAlign.center,
                 ),
-                onTap: (){
-                  if (isRecord){
-                    _stopRecord();
-                  }else{
-                    _startRecord();
-                  }
-                },
-              ),
-              new Text('recording: ' + recordPosition.toString()),
-              new Text('power: ' + recordPower.toString()),
-              new InkWell(
-                child: new Container(
-                  margin: new EdgeInsets.only(top: 40.0),
-                  alignment: FractionalOffset.center,
-                  child: new Text(isPlay ? 'Stop':'Play'),
-                  height: 40.0,
-                  width: 200.0,
-                  color: Colors.blue,
-                ),
-                onTap: (){
-                  if (!isRecord && file.length > 0){
-                    _startStopPlay();
-                  }
-                },
-              ),
-              new Text('playing: ' + playPosition.toString()),
-            ],
-          ): new Text('Microphone Access Disabled.\nYou can enable access in Settings', textAlign: TextAlign.center,),
         ),
       ),
     );
