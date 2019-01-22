@@ -250,19 +250,19 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
 
   private boolean stopPlay(){
     try{
-      if (player.isPlaying()){
+      if (player != null && player.isPlaying()){
         player.stop();
+        stopPlayTimer();
+        updatePlayingWithCode("audioPlayerDidFinishPlaying");
         player.release();
       }
     }catch(Exception e){
-
+      Log.i("MEDCORDER_AUDIO", "Exception:" + e.getMessage());
     }
     finally {
       player = null;
     }
 
-    stopPlayTimer();
-    updatePlayingWithCode("audioPlayerDidFinishPlaying");
     isPlaying = false;
     return true;
   }

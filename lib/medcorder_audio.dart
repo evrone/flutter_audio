@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:flutter/services.dart';
 
 class MedcorderAudio {
 
@@ -98,11 +97,11 @@ class MedcorderAudio {
     }
   }
 
-  void _onEvent(Map<String, dynamic> event) {
+  void _onEvent(dynamic event) {
     callback(event);
   }
 
-  void _onError(PlatformException error) {
+  void _onError(dynamic error) {
     print('CHannel Error');
   }
 }
