@@ -12,3 +12,11 @@
 * Flutter SDK upgrade
 * Dart 2 upgrade
 * Errors fix
+
+## 0.0.3
+
+* readme update
+
+## 0.0.4
+
+* description update

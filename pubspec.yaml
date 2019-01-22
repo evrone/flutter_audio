@@ -1,6 +1,6 @@
 name: medcorder_audio
 description: Flutter audio record/play plugin. With medcorder_audio plugin you can integrate record/play audio support into your flutter app for iOS or Android.
-version: 0.0.3
+version: 0.0.4
 author: Dzmirty Kryvalapau <dimmetrius@gmail.com>
 homepage: https://github.com/evrone/flutter_audio
 
