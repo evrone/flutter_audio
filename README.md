@@ -1,6 +1,12 @@
 # medcorder_audio
 
 ## Flutter record/play audio plugin.
+
+<a href="https://evrone.com/?utm_source=something">
+  <img src="https://evrone.com/logo/evrone-sponsored-logo.png"
+       alt="Sponsored by Evrone" width="231">
+</a>
+
 ### Developed for [Evrone.com](https://evrone.com/)
 ### Funded by David Weekly [dweek.ly](http://dweek.ly/)
 
