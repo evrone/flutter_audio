@@ -99,9 +99,17 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
     }
   }
     
-  private void sendEvent(Object o){
+  private void sendEvent(final Object o){
     if (eventSink != null){
-      eventSink.success(o);
+
+        //Run this in the UI thread to avoid a crash in flutter engine.
+        this.activity.runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          eventSink.success(o);
+        }
+         });
+        //eventSink.success(o);
     }
   }
 
