@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.util.Log;
+
 import androidx.core.content.ContextCompat;
 
 import java.io.File;
@@ -99,9 +100,14 @@ public class MedcorderAudioPlugin implements MethodCallHandler, EventChannel.Str
     }
   }
     
-  private void sendEvent(Object o){
+  private void sendEvent(final Object o){
     if (eventSink != null){
-      eventSink.success(o);
+      activity.runOnUiThread(new Runnable() {
+        @Override
+        public void run() {
+          eventSink.success(o);
+        }
+      });
     }
   }
 
