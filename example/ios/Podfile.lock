@@ -4,19 +4,19 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
-  - Flutter (from `.symlinks/flutter/ios`)
+  - Flutter (from `Flutter`)
   - medcorder_audio (from `.symlinks/plugins/medcorder_audio/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
-    :path: ".symlinks/flutter/ios"
+    :path: Flutter
   medcorder_audio:
     :path: ".symlinks/plugins/medcorder_audio/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 9d0fac939486c9aba2809b7982dfdbb47a7b0296
-  medcorder_audio: caf805a2f6d807226a377ca0edceedccfa5957eb
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  medcorder_audio: 39016cfc6d8d7eded898ef88dc56984496c7b017
 
-PODFILE CHECKSUM: aff02bfeed411c636180d6812254b2daeea14d09
+PODFILE CHECKSUM: 3dbe063e9c90a5d7c9e4e76e70a821b9e2c1d271
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

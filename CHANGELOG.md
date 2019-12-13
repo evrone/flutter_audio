@@ -20,3 +20,7 @@
 ## 0.0.4
 
 * description update
+
+## 0.0.5
+
+* flutter upgrade, androidX support
