@@ -7,7 +7,7 @@
        alt="Sponsored by Evrone" width="231">
 </a>
 
-### Developed for [Evrone.com](https://evrone.com/?utm_source=github&utm_campaign=flutter_audio)
+### Developed for [Evrone.com](https://evrone.com/flutter?utm_source=github&utm_campaign=flutter_audio)
 ### Funded by David Weekly [dweek.ly](http://dweek.ly/)
 
 ## Getting Started
