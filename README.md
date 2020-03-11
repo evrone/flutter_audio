@@ -8,7 +8,7 @@
 </a>
 
 ### Developed for [Evrone.com](https://evrone.com/flutter?utm_source=github&utm_campaign=flutter_audio)
-### Funded by David Weekly [dweek.ly](http://dweek.ly/)
+### Funded by Medcorder [Medcorder.com](https://medcorder.com/)
 
 ## Getting Started
 
@@ -17,7 +17,7 @@ For help getting started with Flutter, view our online
 
 For help on editing plugin code, view the [documentation](https://flutter.io/platform-plugins/#edit-code).
 
-With medcorder_audio plugin you can integrate record/play audio support into your flutter app for iOS or Android.
+With the medcorder_audio plugin you can integrate record/play audio support into your flutter app for iOS or Android.
 
 ## Plugin functions
 ### setAudioSettings
