@@ -24,3 +24,7 @@
 ## 0.0.5
 
 * flutter upgrade, androidX support
+
+## 0.0.6
+
+* adding dart and flutter badges
