@@ -1,6 +1,8 @@
 # medcorder_audio
 
 ## Flutter record/play audio plugin.
+[![pub package](https://img.shields.io/pub/v/medcorder_audio.svg)](https://pub.dev/medcorder_audio/win32)
+[![Language](https://img.shields.io/badge/language-Dart-blue.svg)](https://dart.dev)
 
 <a href="https://evrone.com/?utm_source=github&utm_campaign=flutter_audio">
   <img src="https://evrone.com/logo/evrone-sponsored-logo.png"
