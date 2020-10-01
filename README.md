@@ -64,7 +64,7 @@ stop audio playing\
 **returns: 'OK', 'FAIL'**\
 
 ## Plugin events
-for recieving plugin events you need assign callback function\
+for receiving plugin events you need assign callback function\
 **void _onEvent(dynamic event) {...}**
 
 ### recording events
