@@ -4,7 +4,7 @@
 
 ## Flutter record/play audio plugin.
 ### Developed for [Evrone.com](https://evrone.com/)
-### Funded by David Weekly [dweek.ly](http://dweek.ly/)
+### Funded by David Weekly [dweek.ly](https://david.weekly.org/)
 
 
 ## 0.0.2
