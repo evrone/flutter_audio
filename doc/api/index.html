@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+  <meta name="generator" content="made with love by dartdoc 0.40.0">
+  <meta name="description" content="medcorder_audio API docs, for the Dart programming language.">
+  <title>medcorder_audio - Dart API docs</title>
+
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="static-assets/github.css">
+  <link rel="stylesheet" href="static-assets/styles.css">
+  <link rel="icon" href="static-assets/favicon.png">
+
+</head>
+
+<body data-base-href=""
+      data-using-base-href="false">
+
+<div id="overlay-under-drawer"></div>
+
+<header id="title">
+  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <ol class="breadcrumbs gt-separated dark hidden-xs">
+    <li><a href="https://github.com/evrone/flutter_audio">medcorder_audio package</a></li>
+  </ol>
+  <div class="self-name">medcorder_audio</div>
+  <form class="search navbar-right" role="search">
+    <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+  </form>
+</header>
+
+<main>
+
+  <div id="dartdoc-sidebar-left" class="sidebar sidebar-offcanvas-left">
+    <header id="header-search-sidebar" class="hidden-l">
+      <form class="search-sidebar" role="search">
+        <input type="text" id="search-sidebar" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
+      </form>
+    </header>
+    
+    <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
+      <li><a href="https://github.com/evrone/flutter_audio">medcorder_audio package</a></li>
+    </ol>
+    
+    <h5 class="hidden-xs"><span class="package-name">medcorder_audio</span> <span class="package-kind">package</span></h5>
+    <ol>
+          <li class="section-title">Libraries</li>
+          <li><a href="medcorder_audio/medcorder_audio-library.html">medcorder_audio</a></li>
+    </ol>
+  </div>
+
+  <div id="dartdoc-main-content" class="main-content">
+      <section class="desc markdown">
+        <h1 id="medcorder_audio">medcorder_audio</h1>
+<h2 id="flutter-recordplay-audio-plugin">Flutter record/play audio plugin.</h2>
+<p><a href="https://pub.dev/packages/medcorder_audio"><img src="https://img.shields.io/pub/v/medcorder_audio.svg" alt="pub package"></a>
+<a href="https://dart.dev"><img src="https://img.shields.io/badge/language-Dart-blue.svg" alt="Language"></a></p><a href="https://evrone.com/?utm_source=github&amp;utm_campaign=flutter_audio">
+<img src="https://evrone.com/logo/evrone-sponsored-logo.png" alt="Sponsored by Evrone" width="231">
+</a>
+<h3 id="developed-for-evronecomhttpsevronecomflutterutm_sourcegithubutm_campaignflutter_audio">Developed for <a href="https://evrone.com/flutter?utm_source=github&amp;utm_campaign=flutter_audio">Evrone.com</a></h3>
+<h3 id="funded-by-medcorder-medcordercomhttpsmedcordercom">Funded by Medcorder <a href="https://medcorder.com/">Medcorder.com</a></h3>
+<h2 id="getting-started">Getting Started</h2>
+<p>For help getting started with Flutter, view our online
+<a href="https://flutter.io/">documentation</a>.</p>
+<p>For help on editing plugin code, view the <a href="https://flutter.io/platform-plugins/#edit-code">documentation</a>.</p>
+<p>With the medcorder_audio plugin you can integrate record/play audio support into your flutter app for iOS or Android.</p>
+<h2 id="plugin-functions">Plugin functions</h2>
+<h3 id="setaudiosettings">setAudioSettings</h3>
+<p><strong>Future<string> setAudioSettings()</string></strong><br>
+iOS only. open PlayAndRecord audio session<br>
+<strong>returns: 'OK', 'FAIL'</strong></p>
+<h3 id="backaudiosettings">backAudioSettings</h3>
+<p><strong>Future<string> backAudioSettings()</string></strong><br>
+iOS only. close PlayAndRecord audio session<br>
+<strong>returns: 'OK', 'FAIL'</strong></p>
+<h3 id="startrecord">startRecord</h3>
+<p><strong>Future<string> startRecord(String fileId)</string></strong><br>
+start record audio file to app documents path<br>
+<strong>returns: 'OK', 'FAIL'</strong></p>
+<h3 id="stoprecord">stopRecord</h3>
+<p><strong>Future<string> stopRecord()</string></strong><br>
+stop audio recording process<br>
+<strong>returns: 'OK', 'FAIL'</strong></p>
+<h3 id="checkmicrophonepermissions">checkMicrophonePermissions</h3>
+<p><strong>Future<string> checkMicrophonePermissions()</string></strong><br>
+check if you have recording audio permissions<br>
+<strong>returns: 'OK', 'NO'</strong></p>
+<h3 id="startplay">startPlay</h3>
+<p><strong>Future<string> startPlay(dynamic params) async</string></strong><br>
+start audio playing for file with position<br>
+<strong>returns: 'OK', 'FAIL'</strong><br>
+<strong>params: Map&lt;String, String&gt;</strong></p>
+<table><thead><tr><th>Key</th><th style="text-align: center;">Type</th><th style="text-align: right;">Description</th></tr></thead><tbody><tr><td>file</td><td style="text-align: center;">String</td><td style="text-align: right;">String file Id</td></tr><tr><td>position</td><td style="text-align: center;">double</td><td style="text-align: right;">play start position in seconds</td></tr></tbody></table>
+<h3 id="stopplay">stopPlay</h3>
+<p><strong>Future<string> stopPlay()</string></strong><br>
+stop audio playing<br>
+<strong>returns: 'OK', 'FAIL'</strong>\</p>
+<h2 id="plugin-events">Plugin events</h2>
+<p>for receiving plugin events you need assign callback function<br>
+<strong>void _onEvent(dynamic event) {...}</strong></p>
+<h3 id="recording-events">recording events</h3>
+<table><thead><tr><th>Key</th><th style="text-align: center;">Type</th><th style="text-align: right;">Description</th></tr></thead><tbody><tr><td>'code'</td><td style="text-align: center;">String</td><td style="text-align: right;">'recording',</td></tr><tr><td>'url'</td><td style="text-align: center;">String</td><td style="text-align: right;">recording file url</td></tr><tr><td>'peakPowerForChannel'</td><td style="text-align: center;">double</td><td style="text-align: right;">peak power for channel</td></tr><tr><td>'currentTime'</td><td style="text-align: center;">double</td><td style="text-align: right;">recording time in seconds</td></tr></tbody></table>
+<h3 id="playing-events">playing events</h3>
+<table><thead><tr><th>Key</th><th style="text-align: center;">Type</th><th style="text-align: right;">Description</th></tr></thead><tbody><tr><td>'code'</td><td style="text-align: center;">String</td><td style="text-align: right;">'playing', 'audioPlayerDidFinishPlaying'</td></tr><tr><td>'url'</td><td style="text-align: center;">String</td><td style="text-align: right;">playing file url</td></tr><tr><td>'currentTime'</td><td style="text-align: center;">double</td><td style="text-align: right;">playing time in seconds</td></tr><tr><td>'duration'</td><td style="text-align: center;">double</td><td style="text-align: right;">playing file duration</td></tr></tbody></table>
+      </section>
+      
+      <section class="summary">
+          <h2>Libraries</h2>
+        <dl>
+          <dt id="medcorder_audio">
+            <span class="name"><a href="medcorder_audio/medcorder_audio-library.html">medcorder_audio</a></span>           
+          </dt>
+          <dd>
+             
+          </dd>
+        </dl>
+      </section>
+
+  </div> <!-- /.main-content -->
+
+  <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
+  </div>
+
+</main>
+
+<footer>
+  <span class="no-break">
+    medcorder_audio
+      0.0.6
+  </span>
+
+</footer>
+
+<script src="static-assets/highlight.pack.js"></script>
+<script src="static-assets/script.js"></script>
+
+
+</body>
+
+</html>
