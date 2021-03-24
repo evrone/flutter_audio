@@ -28,3 +28,8 @@
 ## 0.0.6
 
 * adding dart and flutter badges
+
+## 0.0.7
+
+* added api doc page
+* readme updated 
