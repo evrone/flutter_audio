@@ -13,10 +13,35 @@ class MedcorderAudio {
     eventChannel.receiveBroadcastStream().listen(_onEvent, onError: _onError);
   }
 
+  /// Callback function
+  ///
+  /// ```dart
+  ///    void Function(dynamic event)
+  /// ```
+  ///
+  /// Event has [code] field for get event code
+  ///
+  /// ## Available events:
+  /// ### recording events
+  /// | Key      | Type           | Description  |
+  /// | ------------- |:-------------:| ---------:|
+  /// |'code'	|String	|'recording', |
+  /// |'url'	|String	|recording file url|
+  /// |'peakPowerForChannel'	|double	|peak power for channel|
+  /// |'currentTime'	|double	|recording time in seconds|
+  ///
+  /// ### playing events
+  /// | Key      | Type           | Description  |
+  /// | ------------- |:-------------:| ---------:|
+  /// |'code'	|String	|'playing', 'audioPlayerDidFinishPlaying' |
+  /// |'url'	|String	|playing file url|
+  /// |'currentTime'	|double	|playing time in seconds|
+  /// |'duration'	|double	|playing file duration|
   void setCallBack(dynamic _callback) {
     callback = _callback;
   }
 
+  /// iOS only. open PlayAndRecord audio session
   Future<String> setAudioSettings() async {
     try {
       final String result = await platform.invokeMethod('setAudioSettings');
@@ -28,6 +53,7 @@ class MedcorderAudio {
     }
   }
 
+  /// iOS only. close PlayAndRecord audio session
   Future<String> backAudioSettings() async {
     try {
       final String result = await platform.invokeMethod('backAudioSettings');
@@ -39,6 +65,7 @@ class MedcorderAudio {
     }
   }
 
+  /// Start record audio file to app documents path
   Future<String> startRecord(String file) async {
     try {
       final String result = await platform.invokeMethod('startRecord', file);
@@ -50,6 +77,7 @@ class MedcorderAudio {
     }
   }
 
+  /// Stop audio recording process
   Future<String> stopRecord() async {
     try {
       final String result = await platform.invokeMethod('stopRecord');
@@ -61,6 +89,7 @@ class MedcorderAudio {
     }
   }
 
+  /// Check if you have recording audio permissions
   Future<String> checkMicrophonePermissions() async {
     try {
       final String result =
@@ -73,6 +102,7 @@ class MedcorderAudio {
     }
   }
 
+  /// Start audio playing for file with position
   Future<String> startPlay(dynamic params) async {
     try {
       final String result = await platform.invokeMethod('startPlay', params);
@@ -84,6 +114,7 @@ class MedcorderAudio {
     }
   }
 
+  /// Stop audio playing
   Future<String> stopPlay() async {
     try {
       final String result = await platform.invokeMethod('stopPlay');
@@ -95,6 +126,7 @@ class MedcorderAudio {
     }
   }
 
+  /// For receiving plugin events you need assign callback function
   void _onEvent(dynamic event) {
     callback(event);
   }
