@@ -101,6 +101,17 @@
 </ol>)
       
     </section>
+    <section class="desc markdown">
+      <p>Callback function</p>
+<pre class="language-dart"><code class="language-dart">   void Function(dynamic event)
+</code></pre>
+<p>Event has <code>code</code> field for get event code</p>
+<h2 id="available-events">Available events:</h2>
+<h3 id="recording-events">recording events</h3>
+<table><thead><tr><th>Key</th><th style="text-align: center;">Type</th><th style="text-align: right;">Description</th></tr></thead><tbody><tr><td>'code'</td><td style="text-align: center;">String</td><td style="text-align: right;">'recording',</td></tr><tr><td>'url'</td><td style="text-align: center;">String</td><td style="text-align: right;">recording file url</td></tr><tr><td>'peakPowerForChannel'</td><td style="text-align: center;">double</td><td style="text-align: right;">peak power for channel</td></tr><tr><td>'currentTime'</td><td style="text-align: center;">double</td><td style="text-align: right;">recording time in seconds</td></tr></tbody></table>
+<h3 id="playing-events">playing events</h3>
+<table><thead><tr><th>Key</th><th style="text-align: center;">Type</th><th style="text-align: right;">Description</th></tr></thead><tbody><tr><td>'code'</td><td style="text-align: center;">String</td><td style="text-align: right;">'playing', 'audioPlayerDidFinishPlaying'</td></tr><tr><td>'url'</td><td style="text-align: center;">String</td><td style="text-align: right;">playing file url</td></tr><tr><td>'currentTime'</td><td style="text-align: center;">double</td><td style="text-align: right;">playing time in seconds</td></tr><tr><td>'duration'</td><td style="text-align: center;">double</td><td style="text-align: right;">playing file duration</td></tr></tbody></table>
+    </section>
     
     <section class="summary source-code" id="source">
       <h2><span>Implementation</span></h2>
@@ -119,7 +130,7 @@
 <footer>
   <span class="no-break">
     medcorder_audio
-      0.0.6
+      0.0.7
   </span>
 
 </footer>
